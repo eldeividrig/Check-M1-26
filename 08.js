@@ -17,9 +17,36 @@
 // la ecuacion quedaria 5-3 = 2, 2*4 = 8, 8/2 = 4, 4^2 ------> resultado = 16
 
 function countDeep(arr) {
-  // Tu código aca:
-  
+  // Tu código aca: 
+  function flattenDeep(arr1) {
+    return arr1.reduce((acc, val) => Array.isArray(val) ? acc.concat(flattenDeep(val)) : acc.concat(val), []);
+  }
+  let count = 0
+  function countArr(arr) {
+    if (Array.isArray(arr)) {
+      for (let i = 0; i < arr.length; i++) {
+        countArr(arr[i]);
+      }
+      count++
+    }
+    return count;
+  }
+  let nroArr = countArr(arr);
+  let arr1 = flattenDeep(arr);
+  let string = 0;
+  let number = 0;
+  let boolean = 0;
+  let unde = 0;
+  for (let i = 0; i < arr1.length; i++) {
+    if (typeof arr1[i] === 'string') string++;
+    if (typeof arr1[i] === 'boolean') boolean++;
+    if (typeof arr1[i] === 'number') number++;
+    if (arr1[i] === undefined) unde++;
+  };
+  return total = Math.pow((((nroArr - number) * string) / boolean), unde); 
 }
+
+
 
 // No modifiques nada debajo de esta linea //
 

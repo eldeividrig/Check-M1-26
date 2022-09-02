@@ -8,6 +8,20 @@
 
 function insertAndSort(array, obj) {
   // Tu código acá
+  for (let clave in obj) {
+    array.push(obj[clave]);
+  }
+  let arr = array;
+  for (let i = 1; i < arr.length; i++) {
+    let aux = arr[i];
+    let j = i - 1;
+    while ((j >= 0) && (aux < arr[j])) {
+      arr[j + 1] = arr[j];
+      j--;
+    }
+    arr[j + 1] = aux;
+  }
+  return (arr);
 
 }
 
