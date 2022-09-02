@@ -22,7 +22,20 @@ const { Stack } = require("./DS");
 
 function crearStack(palabra) {
   // Tu código aca:
-  
+  var stack = new Stack;
+  if(palabra === "") return false;
+  for (let i = 0; i < palabra.length; i++) {
+    if (palabra[i] === "*") {
+      if (stack.size() === 0) {
+        return "Stack vacío";
+      }else{
+        stack.pop();
+      }
+    }else{
+      stack.push(palabra[i]);
+    }    
+  }
+  return stack;
 }
 
 // ⚠️ NO MODIFICAR NADA POR DEBAJO DE ESTA LÍNEA ⚠️

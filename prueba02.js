@@ -54,22 +54,21 @@ linkedList.add(1);
 LinkedList.prototype.simplifyList = function () {
     // Tu código aca:
     let current = this.head;
+    let arr = [];
     if (!this.head) return false;
-    let check = true;
-    while (check) {
-        check = false;
-        while (current.next) {
-            if (linkedList.search(current.value)) {
-                check= true;
-            }
-            current = current.next;
-        }
-        current = this.head;
+    while (current) {
+        arr.push(current.value);
+        current = current.next;
     }
-
-    return current;
+    let arrNuevo = arr.filter((valor, indice) => {
+        return arr.indexOf(valor) === indice;
+    });
+    this.head = null
+    while (arrNuevo.length > 0) {
+        this.add(arrNuevo.shift())
+    }
+    return this.head
 };
 
 
 console.log(linkedList.simplifyList());
-console.log(linkedList.search(2));
